@@ -129,3 +129,28 @@ Based on a **200mAh** Li-Po battery:
 - **Static Time (Always-on):** Over 1 year (EPD retains the image without power).
 - **Typical Usage:** ~10-12 days (with BLE active and 1 refresh/hour).
 - **Heavy Usage:** ~4-5 days (frequent haptic notifications and updates).
+
+---
+
+## Bill of Materials (BOM)
+
+| Component | Description | Qty | Manufacturer | Part Number | Datasheet |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| **Microcontroller** | nRF52840 (AQFN-74) | 1 | Nordic Semiconductor | NRF52840_QF | [Link](https://files.seeedstudio.com/wiki/XIAO-BLE/Nano_BLE_MCU-nRF52840_PS_v1.1.pdf) |
+| **Antenna** | 2.45GHz Chip Antenna | 1 | Johanson Technology | 2450AT18B100E | [Link](https://www.johansontechnology.com/datasheets/2450AT18B100.pdf) |
+| **Accelerometer** | Triaxial low-g 12bit Sensor | 1 | Bosch Sensortec | BMA423 | [Link](https://watchy.sqfmi.com/assets/files/BST-BMA423-DS000-1509600-950150f51058597a6234dd3eaafbb1f0.pdf) |
+| **Battery Charger** | Li-Ion/Polymer Charger IC | 1 | Texas Instruments | BQ25180YBGR | [Link](https://www.ti.com/product/BQ25180) |
+| **Haptic Driver** | Driver for ERM/LRA | 1 | Texas Instruments | DRV2605YZFR | [Link](https://www.ti.com/product/DRV2605) |
+| **Voltage Regulator** | Buck-Boost DC-DC | 1 | Richtek | RT6160AWSC | [Link](https://www.richtek.com/Products/Switching%20Regulators/Buck-Boost%20Converter/RT6160A) |
+| **Fuel Gauge** | 1-Cell/2-Cell Fuel Gauge | 1 | Analog Devices | MAX17048G+T10 | [Link](https://www.analog.com/en/products/max17048.html) |
+| **Connector (FPC)** | 0.5mm FPC RA SMT 24Ckt | 1 | Molex | 503480-2400 | [Link](https://www.molex.com/en-us/products/part-detail/5034802400) |
+| **Connector (USB)** | USB Type-C 16-pin | 1 | Kinghelm | KH-TYPE-C-16P | [Link](https://jlcpcb.com/api/file/downloadByFileSystemAccessId/8588905154556923904) |
+| **ESD Protection** | Low Cap. ESD Protection | 1 | STMicroelectronics | USBLC6-2SC6Y | [Link](https://www.st.com/en/protection-devices/usblc6-2.html) |
+| **MOSFET (P)** | P-channel 20V/4.2A | 1 | Diodes Inc. | DMG2305UX-7 | [Link](https://www.lcsc.com/datasheet/C469327.pdf) |
+| **MOSFET (N)** | N-channel 30V 1.5A | 1 | Vishay Siliconix | SI1308EDL-T1-GE3 | [Link](https://www.lcsc.com/datasheet/C469327.pdf) |
+| **Schottky Diode** | 30V 0.5A Schottky | 3 | ON Semiconductor | MBR0530 | [Link](https://www.onsemi.com/pdf/datasheet/mbr0530t1-d.pdf) |
+| **Inductor** | SMD Inductor 0.47µH | 1 | TDK | FTC252012SR47MBCA | [Link](https://jlcpcb.com/partdetail/6763488-FTC252012SR47MBCA/C5832368) |
+| **Inductor** | Power Inductor 68uH | 1 | Wurth Electronics | 744043680 | [Link](https://www.we-online.com/en/components/products/WE-TPC) |
+| **Switches** | Tactile Switches | 3 | Panasonic | EVP-AKE31A | [Link](https://wmsc.lcsc.com/wmsc/upload/file/pdf/v2/lcsc/2301111010_PANASONIC-EVPAKE31A_C569760.pdf) |
+| **Crystals** | 32MHz & 32.768kHz | 2 | Generic/Nordic | X1, X2 | [Link1](https://wmsc.lcsc.com/wmsc/upload/file/pdf/v2/lcsc/2312080231_NDK-NX2016SA-32MHZ-EXS00A-CS11336_C6134317.pdf), [Link2](https://jlcpcb.com/partdetail/SeikoEpson-FC_135_32_7680KAA3/C2650472) |
+| **Test Connector** | CABLE ADAPTER 6 POS | 1 | Tag Connect | TC2030-IDC | [Link](https://www.tag-connect.com/wp-content/uploads/bsk-pdf-manager/2019/12/TC2030-IDC-Datasheet-Rev-B.pdf) |
