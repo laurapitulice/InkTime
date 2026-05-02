@@ -165,3 +165,5 @@ Based on a **200mAh** Li-Po battery:
 | **Switches** | Tactile Switches | 3 | Panasonic | EVP-AKE31A | [Link](https://wmsc.lcsc.com/wmsc/upload/file/pdf/v2/lcsc/2301111010_PANASONIC-EVPAKE31A_C569760.pdf) |
 | **Crystals** | 32MHz & 32.768kHz | 2 | Generic/Nordic | X1, X2 | [Link1](https://wmsc.lcsc.com/wmsc/upload/file/pdf/v2/lcsc/2312080231_NDK-NX2016SA-32MHZ-EXS00A-CS11336_C6134317.pdf), [Link2](https://jlcpcb.com/partdetail/SeikoEpson-FC_135_32_7680KAA3/C2650472) |
 | **Test Connector** | CABLE ADAPTER 6 POS | 1 | Tag Connect | TC2030-IDC | [Link](https://www.tag-connect.com/wp-content/uploads/bsk-pdf-manager/2019/12/TC2030-IDC-Datasheet-Rev-B.pdf) |
+
+** The design and implementation of this PCB were based on the technical guidelines and reference designs provided by [OCW](https://ocw.cs.pub.ro/courses/tsc/proiect2026).
