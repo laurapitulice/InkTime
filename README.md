@@ -1,4 +1,4 @@
-# ⌚ "InkTime smartwatch" - PCB layout in Fusion 360
+# ⌚ "InkTime smartwatch" - PCB layout in Autodesk Fusion360
 InkTime is an e-paper smartwatch designed for month-class battery life, sunlight-readable time-first UX, and essential phone notifications with basic activity
 tracking.
 Developed in Autodesk Fusion 360, the PCB layout adheres to the precise dimensions and mounting requirements of the wearable chassis, ensuring a seamless fit and optimal component placement.
