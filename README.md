@@ -4,7 +4,7 @@ tracking.
 Developed in Autodesk Fusion 360, the PCB layout adheres to the precise dimensions and mounting requirements of the wearable chassis, ensuring a seamless fit and optimal component placement.
 
 ## Hardware Diagram
-![Hardware Diagram](Images/diagram.png)
+![Hardware Diagram](Images/block_diagram.png)
 
 This is an open-hardware wearable based on the nRF52840 microcontroller.
 
