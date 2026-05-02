@@ -3,6 +3,8 @@ InkTime is an e-paper smartwatch designed for month-class battery life, sunlight
 tracking.
 Developed in Autodesk Fusion 360, the PCB layout adheres to the precise dimensions and mounting requirements of the wearable chassis, ensuring a seamless fit and optimal component placement.
 
+---
+
 ## Hardware Diagram
 ![Hardware Diagram](Images/block_diagram.png)
 
@@ -44,12 +46,6 @@ This is an open-hardware wearable based on the nRF52840 microcontroller.
 
 ---
 
-## Debug and Programming
-- **SWD:** Programming and debugging via Tag-Connect TC2030 connector
-- **USB:** Serial communication and charging
-
----
-
 ## nRF52840 Pin Mapping
 
 | Pin nRF52840 | Signal      | Component | Interface |
@@ -82,6 +78,51 @@ This is an open-hardware wearable based on the nRF52840 microcontroller.
 
 ---
 
+## Hardware Design & PCB Layout
+
+### 1. Component Placement Strategy
+The layout process followed a "mechanical-first" approach to ensure perfect alignment with the enclosure:
+* **Mechanical Constraints:** Critical components (USB-C connector, side buttons, and the E-Paper FPC connector) were placed first and **locked** to prevent accidental displacement during the routing process.
+* **Logical Grouping:** Components were clustered according to their schematic blocks. ICs were placed centrally to their respective functional areas to minimize signal path lengths.
+* **Top-Side Only:** All components are placed exclusively on the **TOP layer** to simplify manufacturing and thermal management.
+* **Microcontroller:** The **nRF52840** is positioned relatively in the center of the board to maintain balanced access to all peripheral blocks it commands.
+* **User Interface:** Test points and tactile buttons were strategically placed along the board edges for easy access during debugging and final assembly.
+
+### 2. Design Rules & Routing
+The board utilizes a **2-layer stack-up** with a focus on signal integrity and power stability:
+* **Power & Ground:** 
+    * Power traces are maintained at a width of **≥ 0.3 mm**, while signal traces are **≥ 0.15 mm**.
+    * **Daisy-chaining** was avoided for power; instead, a **branching topology** was used to prevent ground/power loops.
+    * Solid **GND polygon pours** are implemented on both Top and Bottom layers, connected by stitching vias to ensure a low-impedance return path.
+* **Decoupling:** 100nF capacitors are placed as close as possible to the power pins of each integrated circuit to filter high-frequency noise.
+* **Geometry:** Strictly utilized **45° angles** and smooth miters; 90° bends were eliminated to prevent signal reflections and manufacturing "acid traps."
+* **Trace Optimization:** Routes were kept as short as possible. Via usage was minimized, only added when top-layer density required a transition to the bottom layer. Traces were kept away from sensitive areas like the crystal oscillator and inductors.
+
+### 3. RF & EMI Management
+Special precautions were taken for the wireless and power sections:
+* **Antenna Integrity:** The ceramic antenna is isolated in the top-right corner. A strict **keep-out zone** (no copper, traces, or vias) was maintained around the antenna to prevent signal degradation and interference.
+* **Inductor Orientation:** Series inductors (**L2, L3**) are positioned **perpendicularly** (90°) to each other to minimize mutual magnetic coupling and unwanted electromagnetic field amplification.
+* **Clean Zones:** No traces were routed underneath inductors, the crystal oscillator, or mounting holes to maintain signal purity.
+
+### 4. Design Rule Check (DRC) & Intentional Exceptions
+The design was verified against custom DRC rules. Some errors were manually reviewed and accepted based on specific design requirements:
+* **Dimension/Clearance Errors:** The USB-C connector and buttons extend slightly beyond the PCB edge for enclosure alignment. These "Dimension" errors are intentional and neglected.
+* **Via-in-Pad:** In extremely dense areas where traditional routing was inaccessible, **0.15 mm micro-vias** were placed within pads to facilitate connectivity.
+* **3D Modeling:** 3D models were applied to bulky and critical components for enclosure fit-checks; small passives use standard footprint placeholders.
+
+### 5. Final Verification
+* **Clear Silkscreen:** All labels and component designators were cleaned and oriented for high legibility (clear and readable).
+* **Connectivity Audit:** A final manual and automated netlist audit was performed to ensure 100% routing completion.
+* **Manufacturing Ready:** DRC was cleared of all non-intentional errors, ensuring the board meets professional fabrication capabilities.
+  
+---
+
+## Debug and Programming
+- **SWD:** Programming and debugging via Tag-Connect TC2030 connector
+- **USB:** Serial communication and charging
+
+---
+
 ## Power Consumption and Battery Life
 
 The device is optimized for ultra-low power operation, leveraging the nRF52840's sleep states and power-gating techniques for high-voltage peripherals.
@@ -94,42 +135,12 @@ The device is optimized for ultra-low power operation, leveraging the nRF52840's
 | **EPD Refresh** | MCU, EPD Boost Circuit, Display | ~12 mA (peak) |
 | **Haptic Alert** | MCU, Haptic Driver + Motor | ~80 mA (peak) |
 
----
-
-## Design Log
-
-This section outlines the PCB design process, key implementation decisions, and adherence to project constraints.
-
-### Component Placement Strategy
-The layout prioritized mechanically constrained and critical components to ensure seamless integration with the watch enclosure:
-* **Primary I/O:** USB-C connector, side tactile buttons, and E-paper FPC connector.
-* **Core:** nRF52840 MCU.
-
-All components are placed **strictly on the TOP layer**. Passive components (resistors/capacitors) were distributed around their respective ICs to minimize trace length, with **100nF decoupling capacitors** positioned immediately adjacent to power pins for optimal noise suppression.
-
-### Routing & Stack-up
-The design utilizes a **2-layer stack-up** where both Top and Bottom layers carry signals, power, and ground planes.
-* **Power Traces:** Width ≥ 0.3 mm.
-* **Signal Traces:** Width ≥ 0.15 mm.
-* **Geometry:** Strictly 45° or smooth mitered angles; no 90° bends.
-
-### Grounding & EMI Management
-* **Ground Planes:** Solid polygon pours implemented on both layers.
-* **RF Integrity:** A strict keep-out zone was maintained around the ceramic antenna (no copper, traces, or vias) in the board corner.
-* **Inductor Placement:** L2 and L3 are oriented perpendicularly to minimize mutual magnetic interference.
-
-### Component Constraints & Manufacturing
-Adherence to specified footprint requirements:
-* **Resistors:** 0201.
-* **Capacitors:** 0201 (≤ 100nF) / 0402 (> 100nF).
-* **Design Rule Exceptions:** Via drill size DRC errors were manually audited and approved based on manufacturing capabilities.
-
 ### Battery Life Estimation
 Based on a **200mAh** Li-Po battery:
 - **Static Time (Always-on):** Over 1 year (EPD retains the image without power).
 - **Typical Usage:** ~10-12 days (with BLE active and 1 refresh/hour).
 - **Heavy Usage:** ~4-5 days (frequent haptic notifications and updates).
-
+  
 ---
 
 ## Bill of Materials (BOM)
